@@ -1,8 +1,8 @@
 /*
  * switch.h
  *
- *  Created on: Mar 27, 2024
- *      Author: Nilesh
+ *  Created on: April 5, 2024
+ *      Author: Yugandhar
  */
 
 #ifndef SWITCH_H_
@@ -19,7 +19,7 @@
 void SwitchInit(uint32_t pin);
 int SwitchGetState(uint32_t pin);
 
-extern volatile int exti0_flag;
+extern int exti0_flag;
 
 #endif /* SWITCH_H_ */
 

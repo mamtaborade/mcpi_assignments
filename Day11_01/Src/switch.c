@@ -1,8 +1,8 @@
 /*
  * switch.c
  *
- *  Created on: Mar 27, 2024
- *      Author: Nilesh
+ *  Created on: April 5, 2024
+ *      Author: Yugandhar
  */
 
 #include "switch.h"
@@ -37,7 +37,7 @@ int SwitchGetState(uint32_t pin) {
 }
 
 // Global flag for interrupt
-volatile int exti0_flag = 0;
+int exti0_flag = 0;
 
 // Switch EXTT0 IRQ Handler
 void EXTI0_IRQHandler(void) {

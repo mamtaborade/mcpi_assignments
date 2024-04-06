@@ -2,7 +2,7 @@
  * timer.c
  *
  *  Created on: Apr 5, 2024
- *      Author: Nilesh
+ *      Author: Yugandhar
  */
 #include "timer.h"
 

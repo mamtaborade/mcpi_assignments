@@ -15,45 +15,32 @@
  *
  ******************************************************************************
  */
-/*1. Implement PWM on Timer8. Increase duty cycle by 10 on each switch press (handle interrupt). Optional part: On next switch press decrease value by 10.*/
+
 #include <stdint.h>
 #include <stdio.h>
 #include "stm32f4xx.h"
 #include "system_stm32f4xx.h"
+
 #include "timer.h"
 #include "switch.h"
-
-
-
-
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
-
+int duty = 1;
 int main(void)
 {
-    int duty=1;
-    SystemInit();
-    TimerInit();
+	SystemInit();
+	TimerInit();
 	SwitchInit(SWITCH);
-    while(1) {
-        for(duty=1; duty<=100;) {
-            TIM8->CCR1 = duty;
+	while(duty<=100)
+	{
 		while(exti0_flag == 0);
-		duty=duty+10;
+		TIM8->CCR1 = duty;
+		DelayMs(50);
+		duty += 10;
 		exti0_flag = 0;
-            DelayMs(50);
-        }
-        for(; duty>=1; ) {
-            TIM8->CCR1 = duty;
-            while(exti0_flag == 0)
-            	;
-    		duty=duty-10;
-    		exti0_flag = 0;
-            DelayMs(50);
-        }
-    }
 
+	}
 	return 0;
 }
